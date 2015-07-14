@@ -61,7 +61,8 @@ class CalculationsController < ApplicationController
   end
 
   def descriptive_statistics
-    @numbers = params[:list_of_numbers].gsub(',', '').split.map(&:to_f)
+    require 'descriptive_statistics'
+    @numbers = params[:list_of_numbers].gsub(',',' ').split.map(&:to_f)
 
     # ================================================================================
     # Your code goes below.
@@ -70,7 +71,7 @@ class CalculationsController < ApplicationController
 
     @sorted_numbers = "Replace this string with your answer."
 
-    @count = "Replace this string with your answer."
+    @count = @numbers.count 
 
     @minimum = "Replace this string with your answer."
 
@@ -80,7 +81,7 @@ class CalculationsController < ApplicationController
 
     @median = "Replace this string with your answer."
 
-    @sum = "Replace this string with your answer."
+    @sum = @numbers.sum
 
     @mean = "Replace this string with your answer."
 
