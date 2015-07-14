@@ -31,14 +31,12 @@ class CalculationsController < ApplicationController
     # The number of years the user input is in the integer @years.
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
-
-  r = @apr / 1200
  
-  n = r * @principal
+  n = @apr * @principal
  
-  d = 1 - (1 + r)**-@years
+  d = 1 - (1 + @apr)**-@years
 
-    @monthly_payment = n/d
+    @monthly_payment = n/(d*12)
   end
 
   def time_between
