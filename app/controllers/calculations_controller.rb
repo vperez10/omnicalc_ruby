@@ -17,7 +17,9 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count 
 
-    @occurrences = "Replace this string with your answer."
+    @occurrences = def count_words(@text)
+  @text.scan(/\w+/).reduce(Hash.new{|i|0}){|res,w| res[w.downcase]+=1;res}
+end
   end
 
   def loan_payment
