@@ -17,9 +17,7 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count 
 
-    @occurrences = def count_words(@text)
-  @text.scan(/\w+/).reduce(Hash.new{|i|0}){|res,w| res[w.downcase]+=1;res}
-end
+    @occurrences =  "replace this" #insert code here
   end
 
   def loan_payment
@@ -34,7 +32,13 @@ end
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
 
-    @monthly_payment = "Replace this string with your answer."
+  r = @apr / 1200
+ 
+  n = r * @principal
+ 
+  d = 1 - (1 + r)**-@years
+
+    @monthly_payment = n/d
   end
 
   def time_between
