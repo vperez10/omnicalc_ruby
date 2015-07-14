@@ -61,7 +61,6 @@ class CalculationsController < ApplicationController
   end
 
   def descriptive_statistics
-    require 'descriptive_statistics'
     @numbers = params[:list_of_numbers].gsub(',',' ').split.map(&:to_f)
 
     # ================================================================================
@@ -69,13 +68,13 @@ class CalculationsController < ApplicationController
     # The numbers the user input are in the array @numbers.
     # ================================================================================
 
-    @sorted_numbers = "Replace this string with your answer."
+    @sorted_numbers = @numbers.sort 
 
     @count = @numbers.count 
 
-    @minimum = "Replace this string with your answer."
+    @minimum = @numbers.min 
 
-    @maximum = "Replace this string with your answer."
+    @maximum = @numbers.max 
 
     @range = "Replace this string with your answer."
 
@@ -83,7 +82,7 @@ class CalculationsController < ApplicationController
 
     @sum = @numbers.sum
 
-    @mean = "Replace this string with your answer."
+    @mean = @sum/@count 
 
     @variance = "Replace this string with your answer."
 
