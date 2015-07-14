@@ -76,9 +76,9 @@ class CalculationsController < ApplicationController
 
     @maximum = @numbers.max 
 
-    @range = "Replace this string with your answer."
+    @range = @minimum.to_f + " to ".to_f + @maximum.to_f
 
-    @median = "Replace this string with your answer."
+    @median = (@minimum + @maximum)/2
 
     @sum = @numbers.sum
 
