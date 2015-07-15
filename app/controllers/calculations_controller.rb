@@ -3,6 +3,8 @@ class CalculationsController < ApplicationController
   def word_count
     @text = params[:user_text]
     @special_word = params[:user_word]
+    @special_word_lc=@special_word.downcase 
+    @text_lc=@text.downcase 
 
     # ================================================================================
     # Your code goes below.
@@ -17,7 +19,7 @@ class CalculationsController < ApplicationController
 
     @word_count = @text.split.count 
 
-    @occurrences =  "replace this" #insert code here
+    @occurrences = @text_lc.split.count{@special_word_lc}
   end
 
   def loan_payment
