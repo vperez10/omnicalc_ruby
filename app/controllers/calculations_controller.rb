@@ -76,7 +76,7 @@ class CalculationsController < ApplicationController
 
     @maximum = @numbers.max 
 
-    @range = "Replace this string with your answer."
+    @range = "replace this" 
 
     @median = (@minimum + @maximum)/2
 
@@ -88,6 +88,6 @@ class CalculationsController < ApplicationController
 
     @standard_deviation = Math.sqrt(@variance)
 
-    @mode = "Replace this string with your answer."
+    @mode = @numbers.uniq.max_by{ |i| @numbers.count( i ) }
   end
 end
