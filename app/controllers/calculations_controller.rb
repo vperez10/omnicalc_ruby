@@ -84,9 +84,9 @@ class CalculationsController < ApplicationController
 
     @mean = @sum/@count 
 
-    @variance = (@sum-@mean)**2
+    @variance = (@median-@mean)**2 
 
-    @standard_deviation = "Replace this string with your answer."
+    @standard_deviation = Math.sqrt(@variance)
 
     @mode = "Replace this string with your answer."
   end
