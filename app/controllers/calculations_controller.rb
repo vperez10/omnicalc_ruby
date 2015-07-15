@@ -84,7 +84,7 @@ class CalculationsController < ApplicationController
 
     @mean = @sum/@count 
 
-    @variance = (@median-@mean)**2 
+    @variance = @numbers.inject(0.0){|sum,x| sum+(x-@mean)**2}/@numbers.count
 
     @standard_deviation = Math.sqrt(@variance)
 
