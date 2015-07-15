@@ -76,7 +76,7 @@ class CalculationsController < ApplicationController
 
     @maximum = @numbers.max 
 
-    @range = "replace this" 
+    @range = @maximum - @minimum
 
     @median = (@minimum + @maximum)/2
 
