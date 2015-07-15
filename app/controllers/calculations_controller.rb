@@ -67,6 +67,12 @@ class CalculationsController < ApplicationController
     # Your code goes below.
     # The numbers the user input are in the array @numbers.
     # ================================================================================
+def variance(list_of_numbers)
+running_total = 0
+count_for_mean = list_of_numbers.count
+list_of_numbers.each do |number|
+running_total = running_total + (((mean_first_dataset) - number)**2)
+end
 
     @sorted_numbers = @numbers.sort 
 
@@ -84,7 +90,7 @@ class CalculationsController < ApplicationController
 
     @mean = @sum/@count 
 
-    @variance = @numbers.inject(0.0){|sum,x| sum+(x-@mean)**2}/@numbers.count
+    @variance = running_total/count_for_mean
 
     @standard_deviation = Math.sqrt(@variance)
 
