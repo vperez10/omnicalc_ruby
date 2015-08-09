@@ -9,7 +9,7 @@ class CalculationsController < ApplicationController
     @character_count_with_spaces = @text.length
     @character_count_without_spaces = @text.length-@text.count(" ")
     @word_count = @text.split.count
-    @occurrences = @text_lc.split.count{@special_word_lc}
+    @occurrences = @text_lc.split.count(@special_word_lc)
   end
 
   def loan_payment
