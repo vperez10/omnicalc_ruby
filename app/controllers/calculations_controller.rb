@@ -3,8 +3,8 @@ class CalculationsController < ApplicationController
   def word_count
     @text = params[:user_text]
     @special_word = params[:user_word]
-    @special_word_lc=@special_word.downcase 
-    @text_lc=@text.downcase 
+    @special_word_lc=@special_word.downcase
+    @text_lc=@text.downcase
 
     # ================================================================================
     # Your code goes below.
@@ -13,11 +13,11 @@ class CalculationsController < ApplicationController
     # ================================================================================
 
 
-    @character_count_with_spaces = @text.length 
+    @character_count_with_spaces = @text.length
 
     @character_count_without_spaces = @text.length-@text.count(" ")
 
-    @word_count = @text.split.count 
+    @word_count = @text.split.count
 
     @occurrences = @text_lc.split.count{@special_word_lc}
   end
@@ -33,9 +33,9 @@ class CalculationsController < ApplicationController
     # The number of years the user input is in the integer @years.
     # The principal value the user input is in the decimal @principal.
     # ================================================================================
- 
+
   n = @apr * @principal
- 
+
   d = 1 - (1 + @apr)**-@years
 
     @monthly_payment = n/(d*12)
@@ -64,7 +64,7 @@ class CalculationsController < ApplicationController
 
   def descriptive_statistics
     @numbers = params[:list_of_numbers].gsub(',',' ').split.map(&:to_f)
-
+end
     # ================================================================================
     # Your code goes below.
     # The numbers the user input are in the array @numbers.
@@ -76,13 +76,13 @@ list_of_numbers.each do |number|
 running_total = running_total + (((mean_first_dataset) - number)**2)
 end
 
-    @sorted_numbers = @numbers.sort 
+    @sorted_numbers = @numbers.sort
 
-    @count = @numbers.count 
+    @count = @numbers.count
 
-    @minimum = @numbers.min 
+    @minimum = @numbers.min
 
-    @maximum = @numbers.max 
+    @maximum = @numbers.max
 
     @range = @maximum - @minimum
 
@@ -90,7 +90,7 @@ end
 
     @sum = @numbers.sum
 
-    @mean = @sum/@count 
+    @mean = @sum/@count
 
     @variance = running_total/count_for_mean
 
