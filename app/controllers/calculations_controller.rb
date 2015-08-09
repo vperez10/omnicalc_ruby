@@ -28,30 +28,30 @@ class CalculationsController < ApplicationController
     @starting = Chronic.parse(params[:starting_time])
     @ending = Chronic.parse(params[:ending_time])
 
-    # ================================================================================
-    # Your code goes below.
-    # The start time is in the Time @starting.
-    # The end time is in the Time @ending.
-    # Note: Ruby stores Times in terms of seconds since Jan 1, 1970.
-    #   So if you subtract one time from another, you will get an integer
-    #   number of seconds as a result.
-    # ================================================================================
 
     @seconds = @ending-@starting
-    @minutes = (@ending-@starting)/60
-    @hours = (@ending-@starting)/3600
-    @days = (@ending-@starting)/86400
-    @weeks = (@ending-@starting)/604800
-    @years = (@ending-@starting)/31536000
+    @minutes = @seconds/60
+    @hours = @seconds/3600
+    @days = @seconds/86400
+    @weeks = @seconds/604800
+    @years = @seconds/31536000
   end
 
   def descriptive_statistics
     @numbers = params[:list_of_numbers].gsub(',',' ').split.map(&:to_f)
+     @sorted_numbers = @numbers.sort
+    @count = @numbers.count
+    @minimum = @numbers.min
+    @maximum = @numbers.max
+    @range = @maximum - @minimum
+    @median = (@minimum + @maximum)/2
+    @sum = @numbers.sum
+    @mean = @sum/@count
+    @standard_deviation = Math.sqrt(@variance)
+    @mode = @numbers.uniq.max_by{ |i| @numbers.count( i ) }
 end
-    # ================================================================================
-    # Your code goes below.
-    # The numbers the user input are in the array @numbers.
-    # ================================================================================
+
+
 def variance(list_of_numbers)
 running_total = 0
 count_for_mean = list_of_numbers.count
@@ -59,26 +59,6 @@ list_of_numbers.each do |number|
 running_total = running_total + (((mean_first_dataset) - number)**2)
 end
 
-    @sorted_numbers = @numbers.sort
 
-    @count = @numbers.count
-
-    @minimum = @numbers.min
-
-    @maximum = @numbers.max
-
-    @range = @maximum - @minimum
-
-    @median = (@minimum + @maximum)/2
-
-    @sum = @numbers.sum
-
-    @mean = @sum/@count
-
-    @variance = running_total/count_for_mean
-
-    @standard_deviation = Math.sqrt(@variance)
-
-    @mode = @numbers.uniq.max_by{ |i| @numbers.count( i ) }
   end
 end
