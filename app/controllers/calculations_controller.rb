@@ -34,7 +34,7 @@ def time_between
     @hours = @seconds/3600
     @days = @seconds/86400
     @weeks = @seconds/604800
-    @years = @seconds/31536000
+    @years = (@seconds/31536000).round(3)
 end
 
 def descriptive_statistics
